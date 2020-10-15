@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mars Rover API</title>
+
+    <link href="~/Content/google_font_source_sans.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/fonts/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/floating-labels.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/blockui.min.js"></script>
+    <script src="~/Scripts/uniform.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

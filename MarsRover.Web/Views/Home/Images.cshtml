@@ -1,0 +1,49 @@
+﻿@using MarsRover.Web.Models
+@model  MarsRoverPhoto
+
+@{
+    Layout = null;
+}
+
+<div class="col-12 px-0 py-0 mb-3">
+   @{ 
+       foreach(Photos photo in Model.Photos)
+       {
+           <div class="col-12 row mt-3">
+
+               <div class="col-6">
+                   <img src="@photo.img_src" class="img-fluid" onclick="DowloadImage(this)" />
+               </div>
+               <div class="col-6">
+                   <div class="col-12 mb-3">
+                       <a href="@photo.img_src" download="@(photo.id).png"><button class="btn btn-default">Download</button></a>
+                   </div>
+                   <div class="col-12 mb-1">
+                       <b>Date: @photo.earth_date</b>
+                   </div>
+
+                   <div class="col-12">
+                       <b>Camera</b>
+                   </div>
+                   <div class="col-12 pl-3">
+                       <div class="col-12">
+                           Name: @photo.Camera.name
+                       </div>
+                       <div class="col-12">
+                          Full Name: @photo.Camera.full_name
+                       </div>
+                   </div>
+                   
+               </div>
+
+              
+               <div class="col-12"><hr /></div>
+           </div>
+       }
+   }
+</div>
+
+
+<script>
+    
+</script>

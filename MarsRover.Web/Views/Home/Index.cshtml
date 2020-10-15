@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mars Rover - Web</title>
+
+    <link href="~/Content/google_font_source_sans.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap_limritless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/fonts/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/floating-labels.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/custom.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/blockui.min.js"></script>
+    <script src="~/Scripts/uniform.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+</head>
+
+<body>
+
+    <div class="content">
+        <div class="card">
+            <div class="card-body">
+                
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h3 class="font-weight-semibold">Mars Rover - Web</h3>
+                    </div>
+                </div>
+
+
+                <div class="col-12 row">
+                    <div class="col-4">
+                        <div class="col-12">
+                            <label>Date</label>
+                        </div>
+                        <div class="col-12">
+                           @Html.TextBox("Date", "", new { @class = "form-control" })
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="button" class="btn btn-default" onclick="ShowImages()">Show Image</button>
+                        </div>
+                    </div>
+                    <div class="col-8 pl-2">
+                        <div class="col-12">
+                            <label>Images</label>
+                        </div>
+                        <div class="col-12 div-images" id="divImages">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
+
+<script>
+    function ShowImages()
+    {
+        var date = $('#Date').val();
+        if(date != '')
+        {
+            var formData = new FormData();
+            formData.append('date', date)
+            $.ajax({
+                type: "POST",
+                url: '/Home/SearchImage/',
+                data: formData,
+                dataType: "html",
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    var div = $('#divImages');
+                    div.empty();
+                    div.append(response);
+                },
+                fail: function () {
+                    alert('failed');
+                }
+            });
+        }
+        else
+            alert('Please enter date');
+    }
+</script>
